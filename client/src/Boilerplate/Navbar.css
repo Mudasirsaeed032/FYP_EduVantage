@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+.navbar-brand {
+    position: absolute;
+    left: 100px;
+    margin-top: 0.3vw;
+    color: white;
+}
+
+
+#mainNav .navbar-brand {
+    position: absolute;
+    top: 0px;
+    left: 28px;
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    /* Slightly increased size for visibility */
+    color: #28a745;
+    /* Green color */
+
+}
+
+#mainNav .navbar-brand p {
+    color: white;
+    font-family: 'Poppins';
+}
+
+#mainNav .navbar-brand i {
+    margin-right: 10px;
+    /* Add spacing between the icon and any potential text */
+    color: #28a745;
+    /* Green color */
+    text-shadow: 0 0 10px rgba(40, 167, 69, 0.7),
+        /* Green glow */
+        0 0 20px rgba(40, 167, 69, 0.6),
+        0 0 30px rgba(40, 167, 69, 0.5);
+    transition: all 0.3s ease;
+    /* Smooth transition effect */
+}
+
+#mainNav .navbar-brand i:hover {
+    text-shadow: 0 0 20px rgba(40, 167, 69, 1),
+        /* Stronger glow on hover */
+        0 0 30px rgba(40, 167, 69, 0.9),
+        0 0 40px rgba(40, 167, 69, 0.8);
+}
+
+#mainNav .navbar-toggler {
+    margin-left: auto;
+    /* Ensure the toggler stays on the right on smaller screens */
+}
+
+
+#mainNav {
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+#Nav-Eduvantage {
+    color: white;
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.navbar-nav {
+    flex-direction: row;
+    /* Ensures nav items are in a row */
+    justify-content: center;
+    /* Center links within the navigation */
+    width: 100%;
+    /* Use full width to allow centering */
+}
+
+.navbar-nav .nav-item {
+    margin: 0 15px;
+    /* Adjust spacing between nav items */
+}
+
+.navbar-toggler {
+    margin-left: auto;
+    /* Ensures the toggler is always on the right */
+}
+
+.Signup-Navbar,
+.user-greeting {
+    position: absolute;
+    /* Positions the login/signup or user greeting to the right */
+    right: 20px;
+    /* Right margin for the sign-up or login links */
+    font-family: 'Poppins';
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    margin: 0 auto;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.navbar-nav .nav-link:hover {
+    color: #3BAF4A;
+}
+
+#username:hover {
+    color: #3BAF4A;
+    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .navbar-brand {
+        position: static;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.Signup-Navbar {
+    margin-left: 0vw;
+    margin-right: 2vw;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    /* Space out title and close button */
+    align-items: center;
+    /* Align items vertically */
+    padding: 1rem;
+    border-bottom: none;
+    /* Remove the default border if needed */
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+.modal-body {
+    padding: 20px;
+}
+
+.close {
+    font-size: 1.5rem;
+}
+
+.modal-header .close {
+    font-size: 1.5rem;
+    /* Adjust the font size */
+    background-color: transparent;
+    /* Remove background color */
+    border: none;
+    /* Remove border */
+    outline: none;
+    /* Remove default outline */
+    cursor: pointer;
+    /* Change to pointer on hover */
+    color: #333;
+    /* Set text color */
+    padding: 5px 10px;
+    /* Add padding for better alignment */
+    border-radius: 50%;
+    /* Make the button round */
+    transition: background-color 0.3s ease;
+    /* Add a hover transition */
+}
+
+.modal-header .close:hover {
+    background-color: #f5f5f5;
+    /* Add a subtle hover effect */
+    color: #000;
+    /* Change color on hover */
+}

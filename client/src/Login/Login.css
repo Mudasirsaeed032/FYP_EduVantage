@@ -1,0 +1,34 @@
+/* Background for login page */
+#login-bg {
+    background-image: url('../assets/services.png');
+}
+
+/* Styling for input fields in the login form */
+#login-form input {
+    background-color: #262626;
+    border: none;
+    border-bottom: solid 2px #555555;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    color: white;
+    font-size: 25px;
+}
+
+/* Placeholder styling for inputs */
+#login-form input::placeholder {
+    font-size: 25px;
+    color: #ffffff;
+}
+
+/* Button styling for login and register */
+#login-form button,
+#signup-button {
+    font-size: 1.34rem;
+    background-color: #3BAF4A;
+    width: 130px;
+}
+
+/* Container styling for the login form */
+#login-container {
+    background-color: #262626;
+}

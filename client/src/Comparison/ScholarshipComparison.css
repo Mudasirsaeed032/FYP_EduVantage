@@ -1,0 +1,78 @@
+/* Comparison container */
+.comparison-container {
+    padding: 40px;
+    margin-top: 2vw;
+    background-color: #f5f5f5;
+    text-align: center;
+    background-image: url('../assets/services.png');
+    color: #ffffff;
+}
+
+.comparison-container h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #3BAF4A;
+    /* Match the green theme of the site */
+    margin-bottom: 40px;
+}
+
+/* Table styling */
+.comparison-table {
+    width: 100%;
+    max-width: 1000px;
+    /* Ensure the table takes up a full width but is constrained */
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-color: #ffffffca;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.514);
+}
+
+.comparison-table thead {
+    background-color: #000000;
+    /* Green theme for table header */
+    color: white;
+    width: 100%;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 15px;
+    border: 1px solid #ffffff;
+    vertical-align: top;
+    /* Aligns content to the top of each cell */
+    text-align: left;
+    /* Aligns text to the left */
+    width: 22vw;
+    /* Ensures columns have equal width (adjust for number of scholarships) */
+
+}
+
+/* Table header styling */
+.comparison-table th {
+    font-size: 1.2rem;
+    text-align: left;
+    /* Left-align the header text */
+    font-weight: bold;
+    color: #295526;
+}
+
+/* Table content styling */
+.comparison-table td {
+    font-size: 1rem;
+    text-align: left;
+    /* Left-align content in the cells */
+    color: #fff8f8;
+    background-color: rgba(0, 0, 0, 0.774);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .comparison-table {
+        font-size: 0.9rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 10px;
+    }
+}

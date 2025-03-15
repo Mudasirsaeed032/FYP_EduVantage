@@ -1,0 +1,125 @@
+/* Recommendation container */
+.recommendation-container {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    /* Adjust height to account for the navbar */
+    background-color: #f5f5f5;
+    text-align: center;
+    background-image: url('../assets/home.png');
+    padding-top: 60px;
+    /* Adjust this value based on your Navbar's height */
+}
+
+.recommendation-container h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #3BAF4A;
+    margin-bottom: 40px;
+}
+
+/* University cards layout */
+.university-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Card styling */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: left;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-location {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.card-link {
+    font-size: 1rem;
+    color: #3BAF4A;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+.best-fit {
+    font-size: 1.1rem;
+    color: #3BAF4A;
+    margin-bottom: 10px;
+}
+
+/* Compare Checkbox */
+.compare-checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.compare-checkbox input {
+    margin-right: 8px;
+}
+
+.compare-checkbox :hover {
+    cursor: pointer;
+}
+
+/* Compare Now Prompt */
+.compare-prompt {
+    margin-top: 20px;
+}
+
+.compare-btn {
+    background-color: #3BAF4A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.compare-btn:hover {
+    background-color: #2e8c39;
+}
+
+#main-recommendation {
+    margin-top: 20px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+}
