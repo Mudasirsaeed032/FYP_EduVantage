@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../Boilerplate/Navbar';
 import Footer from '../Boilerplate/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import ChatUI from '../ChatUi/ChatUi';
-import { FaPaperPlane } from 'react-icons/fa';
-import './Home.css';
+import '../Home/Home.css'
 
-export default function Home() {
+export default function ChatPage() {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+    
+    // Extract query from location state once
+    const initialQuery = location.state?.query || '';
 
     axios.defaults.withCredentials = true;
 
@@ -38,14 +40,6 @@ export default function Home() {
                 console.error('error:', err);
             });
     }
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-        if(!searchQuery.trim()){
-            alert('Please Enter a Query!');
-            return;
-        }
-        navigate('/chatpage', {state: {query: searchQuery}});
-    }
 
     if (isLoading) {
         return <div className="text-center"><div className="spinner-border" role="status"></div></div>;
@@ -61,21 +55,15 @@ export default function Home() {
                             Welcome to <span className='highlightedWord'>EduVantage</span>
                         </div>
 
-                            <form onSubmit={handleSubmit} className='chat-input'>
-                                <input
-                                    type="text"
-                                    placeholder="Type a message"
-                                    value={searchQuery}
-                                    onChange={(e)=> setSearchQuery(e.target.value)}
-                                    required
+                        <div className="col-12 mb-2">
+                            <div className="chatbot-container mx-auto">
+                                {/* Pass the initialQuery as a key to force re-mount if query changes */}
+                                <ChatUI 
+                                    key={`chat-${initialQuery}`} 
+                                    initialMessage={initialQuery}
                                 />
-                                <button
-                                    type="submit"
-                                    className="send-button"
-                                >
-                                    <FaPaperPlane />
-                                </button>
-                            </form>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <Footer />

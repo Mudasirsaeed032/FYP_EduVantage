@@ -9,6 +9,7 @@ import UserProfile from './UserProfile/UserProfile'
 import Scholarship from './Scholarship/Scholarship'
 import ScholarshipComparison from './Comparison/ScholarshipComparison'
 import ChatUI from './ChatUi/ChatUi'
+import ChatPage from './ChatPage/ChatPage'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/scholarship' element={<Scholarship />} />
           <Route path='/scholarshipcomparison' element={<ScholarshipComparison />} />
           <Route path='/chat' element={<ChatUI />} />
+          <Route path='/chatpage' element={<ChatPage />} />
         </Routes>
       </BrowserRouter>
     </>

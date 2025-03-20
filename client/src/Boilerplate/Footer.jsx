@@ -44,7 +44,7 @@ export default function Footer() {
                             <a href="#"><i className="fab fa-facebook-f"></i></a>
                             <a href="#"><i className="fab fa-twitter"></i></a>
                             <a href="#"><i className="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i className="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/muhammad_arham_akmal/"><i className="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

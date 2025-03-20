@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaPaperPlane } from 'react-icons/fa';
 import "./ChatUI.css";
 
-export default function ChatUI() {
+export default function ChatUI({ initialMessage }) {
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState([
         { 
@@ -11,6 +11,9 @@ export default function ChatUI() {
             time: "11:48 PM"
         }
     ]);
+    
+    // Use a ref to track if initial message has been processed
+    const initialMessageProcessedRef = useRef(false);
 
     const dummyResponses = [
         "Interesting! Let me check that for you.",
@@ -25,17 +28,46 @@ export default function ChatUI() {
         return `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')} PM`;
     };
 
+    // Process initial message only once using useEffect with empty dependency array
+    useEffect(() => {
+        // This effect runs only on mount
+        if (initialMessage && initialMessage.trim() !== "" && !initialMessageProcessedRef.current) {
+            console.log("Processing initial message:", initialMessage);
+            
+            const newMessage = {
+                text: initialMessage,
+                sender: "user",
+                time: getCurrentTime()
+            };
+
+            setMessages(prev => [...prev, newMessage]);
+            initialMessageProcessedRef.current = true;
+
+            // Simulate a bot response
+            setTimeout(() => {
+                const botResponse = {
+                    text: dummyResponses[Math.floor(Math.random() * dummyResponses.length)],
+                    sender: "bot",
+                    time: getCurrentTime()
+                };
+                setMessages(prev => [...prev, botResponse]);
+            }, 500);
+        }
+    }, [initialMessage]); // Only dependency is initialMessage
+
     const handleSend = () => {
         if (input.trim()) {
+            console.log("Sending user message:", input);
+            
             // Add user message
             const newMessage = {
                 text: input,
                 sender: "user",
                 time: getCurrentTime()
             };
-            
+
             setMessages(prev => [...prev, newMessage]);
-            
+
             // Add bot response
             setTimeout(() => {
                 const botResponse = {

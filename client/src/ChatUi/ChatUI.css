@@ -107,6 +107,7 @@
     padding: 15px;
     background: #1A1A1A;
     border-top: 1px solid #2d2d2e;
+    border-radius: 10px;
 }
 
 .chat-input input {
