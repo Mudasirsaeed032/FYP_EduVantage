@@ -54,6 +54,16 @@ export default function Home() {
             }, 200); // Simulate a bot response delay
         }
     };
+    const handleLogout = () => {
+        axios.get('http://localhost:3000/logout', { withCredentials: true })
+            .then((res) => {
+                console.log(res.data.message);
+                setUser(null);
+            })
+            .catch((err) => {
+                console.error('error:', err);
+            });
+    }
 
     if (isLoading) {
         return <div className="text-center"><div className="spinner-border" role="status"></div></div>;
@@ -61,7 +71,7 @@ export default function Home() {
 
     return (
         <div className="home">
-            <Navbar user={user} />
+            <Navbar user={user} handleLogout={handleLogout} />
             <main className='container-fluid p-0'>
                 <section className='section mt-5' id='section1'>
                     <div className='row text-center'>
