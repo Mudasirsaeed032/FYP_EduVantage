@@ -26,13 +26,48 @@ export default function Home() {
             });
     }, []);
 
+<<<<<<< HEAD
+=======
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        if (!searchQuery.trim()) {
+            alert('Please enter a query.');
+            return;
+        }
+        navigate('/recommendation', { state: { query: searchQuery } });
+    };
+
+    const handleSendMessage = () => {
+        if (input.trim() !== "") {
+            setMessages([...messages, { text: input, sender: "user" }]);
+            setInput("");
+            setTimeout(() => {
+                setMessages((prevMessages) => [
+                    ...prevMessages,
+                    { text: `Response to: "${input}" (Random AI response)`, sender: "bot" },
+                ]);
+            }, 200); // Simulate a bot response delay
+        }
+    };
+    const handleLogout = () => {
+        axios.get('http://localhost:3000/logout', { withCredentials: true })
+            .then((res) => {
+                console.log(res.data.message);
+                setUser(null);
+            })
+            .catch((err) => {
+                console.error('error:', err);
+            });
+    }
+
+>>>>>>> e97ea6b504892dd00087a3652498e6daad5ceba8
     if (isLoading) {
         return <div className="text-center"><div className="spinner-border" role="status"></div></div>;
     }
 
     return (
         <div className="home">
-            <Navbar user={user} />
+            <Navbar user={user} handleLogout={handleLogout} />
             <main className='container-fluid p-0'>
                 <section className='section mt-5' id='section1'>
                     <div className='row text-center'>

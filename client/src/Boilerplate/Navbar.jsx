@@ -8,15 +8,7 @@ import { Link } from 'react-router-dom';
 const navItems = ['Home', 'Scholarships', 'About', 'Contact Us'];
 
 export default function Navbar({ user, handleLogout }) {
-    const [showSignupModal, setShowSignupModal] = useState(false);  // State to control modal visibility
-
-    const openSignupModal = () => {
-        setShowSignupModal(true);  // Open the modal
-    };
-
-    const closeSignupModal = () => {
-        setShowSignupModal(false);  // Close the modal
-    };
+    
     return (
         <nav id='mainNav' className="navbar navbar-expand-lg navbar-dark">
             <div className="navbar-brand">
