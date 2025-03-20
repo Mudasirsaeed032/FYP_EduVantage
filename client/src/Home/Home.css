@@ -1,33 +1,16 @@
+/* Home.css - Updated with Chat Container Styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-html,
-body {
+html, body {
     overflow-x: hidden;
 }
 
+/* Updated Home Styles */
 .home {
-    height: calc(100vh);
-    align-items: center;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    font-family: 'Poppins';
-}
-
-.section {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.section_Prompt {
-    width: 100vw;
-    height: 20vh;
+    background-color: #000;
 }
 
 #section1 {
@@ -35,12 +18,34 @@ body {
     background-image: url('../assets/homeImg.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    background-blend-mode: overlay;
-    /* Blends the background with the blue shade */
-
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
 }
 
+#mainTagline {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.chatbot-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 15px;
+    margin: 2rem auto;
+}
+
+/* Remove fixed heights */
+.section {
+    width: 100%;
+    padding: 2rem 0;
+}
+
+/* Adjust overlay positioning */
 #section1::before {
     content: '';
     position: absolute;
@@ -48,327 +53,79 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(162, 207, 145, 0.173);
-    /* Blue overlay with opacity */
+    background-color: rgba(0, 0, 0, 0.5); /* Darker overlay */
     z-index: 1;
-    /* Places the overlay above the image */
 }
 
 #section1 * {
     position: relative;
     z-index: 2;
-    /* Ensures that all content inside #section1 is above the overlay */
-}
-
-
-.home .row {
-    width: 100%;
-}
-
-.col-sm {
-    margin-left: 5%;
-    white-space: nowrap;
-}
-
-
-#subLine {
-    font-size: 1.25rem;
-    color: #B8B8B8;
 }
 
 #mainTagline {
     color: white;
     font-size: 3.725rem;
-    min-width: 300px;
+    margin-bottom: 2rem;
 }
 
 .highlightedWord {
-    color: #ffffff;
+    color: #3BAF4A;
     font-weight: bolder;
-    ;
 }
 
-
-#aboutUsSection {
-    margin-top: 10rem;
+/* Chat Container Adjustments */
+.chatbot-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 15px;
+    animation: fadeInUp 0.8s ease;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+/* Responsive Adjustments */
 @media (max-width: 992px) {
-    #subLine {
-        font-size: 1rem;
-        margin: 0 0 1rem 2%;
-        display: flex;
-        justify-content: center;
-    }
-
     #mainTagline {
-        font-size: 2rem;
-        margin: 0 0 1rem 2%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .home-quote-button {
-        margin-left: 2%;
-        margin-top: 1rem;
+        font-size: 2.5rem;
     }
 }
 
 @media (max-width: 768px) {
-    #subLine {
-        font-size: 1rem;
-        margin: 0 0 1rem 2%;
-    }
-
     #mainTagline {
         font-size: 2rem;
-        margin: 0 0 1rem 2%;
     }
-
-    .home-quote-button {
-        margin-left: 2%;
-        margin-top: 1rem;
+    
+    .chat-box {
+        padding: 15px;
+    }
+    
+    .model-buttons {
+        flex-direction: column;
     }
 }
 
 @media (max-width: 576px) {
-    #subLine {
-        font-size: 0.875rem;
-        margin: 0 0 1rem 1%;
-    }
-
     #mainTagline {
-        font-size: 1.5rem;
-        margin: 0 0 1rem 1%;
+        font-size: 1.75rem;
     }
-
-    .home-quote-button {
-        margin-left: 1%;
-        margin-top: 1rem;
+    
+    .chat-messages {
+        height: 250px;
     }
-}
-
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 2s forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* Search Bar Styles */
-.search-bar-container {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-
-
-}
-
-.search-input {
-    border: none;
-    padding: 15px 20px;
-    border-radius: 50px 0 0 50px;
-    flex-grow: 1;
-    outline: none;
-    font-size: 1rem;
-    color: black;
-    background-color: rgb(200, 200, 200);
-}
-
-
-.quick-results-btn {
-    background-color: #091660;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 0 50px 50px 0;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.quick-results-btn:hover {
-    color: white;
-    background-color: #121212;
-    border-color: #091660;
-    box-shadow: 0 0 10px #091660;
-}
-
-.comprehensive-scan-btn {
-    color: rgb(255, 251, 251);
-    background-color: #091660;
-    border-radius: 0 50px 50px 0;
-}
-
-.comprehensive-scan-btn:hover {
-    color: rgb(245, 245, 245);
-    background-color: #319747;
-    border-color: #3BAF4A;
-    box-shadow: 0 0 10px #3BAF4A;
-}
-
-/* Search Input and Button Wrapper */
-.search-bar-wrapper {
-    display: flex;
-    gap: 10px;
-    /* Space between the input and buttons */
-    align-items: center;
-    /* Vertically center the buttons with the input */
-}
-
-/* Search Input */
-.search-input {
-    flex-grow: 2;
-    /* Let input take up more space */
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-}
-
-/* Quick Results and Comprehensive Scan Buttons */
-.quick-results-btn,
-.comprehensive-scan-btn {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.quick-results-btn:hover,
-.comprehensive-scan-btn:hover {
-    background-color: #0056b3;
-}
-
-.comprehensive-scan-btn {
-    background-color: #28A745;
-}
-
-.comprehensive-scan-btn:hover {
-    background-color: #218838;
-}
-
-/* Adjust the flexbox to ensure responsiveness */
-@media (max-width: 768px) {
-    .search-bar-wrapper {
+    
+    .chat-header {
         flex-direction: column;
-        align-items: stretch;
+        gap: 10px;
     }
-
-    .quick-results-btn,
-    .comprehensive-scan-btn {
-        width: 100%;
-        /* Make buttons full-width on mobile */
-        margin-top: 10px;
-    }
-}
-
-.home {
-    font-family: 'Arial', sans-serif;
-}
-
-.chatbot-wrapper {
-    background: #2d2d2e;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.chat-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    background: black;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 350px;
-    overflow-y: auto;
-}
-
-.chat-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.message {
-    padding: 10px 15px;
-    border-radius: 20px;
-    max-width: 80%;
-    word-wrap: break-word;
-    font-size: 16px;
-}
-
-.user-message {
-    background-color: #3BAF4A;
-    color: white;
-    align-self: flex-end;
-}
-
-.bot-message {
-    background-color: #3BAF4A;
-    color: white;
-    align-self: flex-start;
-}
-
-.input-container {
-    display: flex;
-    margin-top: 10px;
-}
-
-.chat-input {
-    flex: 1;
-    padding: 12px;
-    border: 2px solid #d1d5db;
-    border-radius: 20px;
-    font-size: 16px;
-    margin-right: 10px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.chat-input:focus {
-    border-color: #3b82f6;
-}
-
-.send-btn {
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.send-btn:hover {
-    background-color: #2563eb;
-}
-
-#mainTagline {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.highlightedWord {
-    color: #3b82f6;
-}
-
-.section {
-    padding: 50px 0;
 }
 
 .spinner-border {

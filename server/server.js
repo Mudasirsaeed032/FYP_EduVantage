@@ -15,7 +15,7 @@ const User = require('./models/user');
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/EduVantage')
+    await mongoose.connect('mongodb://localhost:27017/EduVantage')
         .then(() => {
             console.log('EduVantage MongoDB has connected!');
         })
