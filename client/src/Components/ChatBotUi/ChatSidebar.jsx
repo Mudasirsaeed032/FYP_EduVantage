@@ -62,7 +62,7 @@ const ChatSidebar = () => {
   const groupedChats = groupChatsByDate(MOCK_CHAT_HISTORY);
 
   return (
-    <Sidebar variant="sidebar" collapsible="offcanvas">
+    <Sidebar variant="sidebar" collapsible={true}>
       <SidebarHeader className="p-3">
         <button 
           onClick={handleNewChat} 

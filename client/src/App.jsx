@@ -29,6 +29,7 @@ function App() {
           <Route path='/scholarshipcomparison' element={<ScholarshipComparison />} />
           <Route path='/chat' element={<ChatUI />} />
           <Route path='/chatpage' element={<ChatPage />} />
+          <Route path='/chatnothing' element={<ChatFullPage />} />
         </Routes>
       </BrowserRouter>
     </>
