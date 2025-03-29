@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import ChatMessage from "@/components/ChatMessage";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import { Button } from "../UI/Button";
+import ChatMessage from "./ChatMessage";
+import { SidebarTrigger } from "../UI/Sidebar";
 
 const initialMessages = [
   {
