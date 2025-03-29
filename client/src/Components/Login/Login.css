@@ -1,6 +1,6 @@
 /* Background for login page */
 #login-bg {
-    background-image: url('../assets/services.png');
+    background-image: url('../../assets/services.png');
 }
 
 /* Styling for input fields in the login form */

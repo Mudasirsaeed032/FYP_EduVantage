@@ -41,7 +41,7 @@ export default function Navbar({ user, handleLogout }) {
                         );
                     })}
                 </ul>
-            </div>
+            </div>  
             {!user ? <div className='Signup-Navbar'>
                 <div className="auth-buttons">
                     <Link to="/login" className="login-button">Login</Link>

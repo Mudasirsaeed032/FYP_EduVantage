@@ -4,7 +4,6 @@ import Navbar from '../Boilerplate/Navbar';
 import Footer from '../Boilerplate/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import ChatUI from '../ChatUi/ChatUi';
 import { FaPaperPlane } from 'react-icons/fa';
 import './Home.css';
 

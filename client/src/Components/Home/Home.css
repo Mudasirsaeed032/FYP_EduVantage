@@ -15,7 +15,7 @@ html, body {
 
 #section1 {
     position: relative;
-    background-image: url('../assets/homeImg.jpg');
+    background-image: url('../../assets/homeImg.jpg');
     background-size: cover;
     background-position: center;
     flex: 1;
