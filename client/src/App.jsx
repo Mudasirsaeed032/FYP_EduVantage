@@ -10,7 +10,6 @@ import Scholarship from './Components/Scholarship/Scholarship'
 import ChatUI from './Components/ChatUi/ChatUi'
 import ChatPage from './Components/ChatPage/Chatpage'
 import ScholarshipComparison from './Components/Comparison/ScholarshipComparison'
-import ChatFullPage from './Components/ChatBotUi/ChatFullPage'
 
 
 function App() {
@@ -29,7 +28,6 @@ function App() {
           <Route path='/scholarshipcomparison' element={<ScholarshipComparison />} />
           <Route path='/chat' element={<ChatUI />} />
           <Route path='/chatpage' element={<ChatPage />} />
-          <Route path='/chatnothing' element={<ChatFullPage />} />
         </Routes>
       </BrowserRouter>
     </>
