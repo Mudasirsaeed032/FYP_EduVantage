@@ -1,4 +1,5 @@
 import * as SheetPrimitive from "@radix-ui/react-dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"; // Import this
 import { cva } from "class-variance-authority";
 import { X } from "lucide-react";
 import * as React from "react";
@@ -44,7 +45,7 @@ const sheetVariants = cva(
   }
 );
 
-const SheetContent = React.forwardRef(({ side = "right", className, children, ...props }, ref) => (
+const SheetContent = React.forwardRef(({ side = "right", className, title = "Sheet", children, ...props }, ref) => (
   <SheetPortal>
     <SheetOverlay />
     <SheetPrimitive.Content
@@ -52,7 +53,13 @@ const SheetContent = React.forwardRef(({ side = "right", className, children, ..
       className={cn(sheetVariants({ side }), className)}
       {...props}
     >
+      {/* ✅ Ensure a title is always present for accessibility */}
+      <VisuallyHidden>
+        <SheetTitle>{title}</SheetTitle>
+      </VisuallyHidden>
+
       {children}
+
       <SheetPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
         <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
