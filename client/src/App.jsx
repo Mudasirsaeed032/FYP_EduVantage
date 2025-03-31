@@ -11,6 +11,7 @@ import ChatUI from './Components/ChatUi/ChatUi'
 import ChatPage from './Components/ChatPage/Chatpage'
 import ScholarshipComparison from './Components/Comparison/ScholarshipComparison'
 import ChatFullPage from './Components/ChatBotUi/ChatFullPage'
+import ChatSidebar from './Components/ChatBotUi/ChatSidebar'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path='/chat' element={<ChatUI />} />
           <Route path='/chatpage' element={<ChatPage />} />
           <Route path='/chatnothing' element={<ChatFullPage />} />
+          <Route path='/sidebar' element={<ChatSidebar />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -10,6 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  SidebarProvider,
 } from "../UI/Sidebar";
 
 type ChatHistoryItem = {
@@ -70,7 +71,10 @@ const ChatSidebar = () => {
   const groupedChats = groupChatsByDate(MOCK_CHAT_HISTORY);
 
   return (
-    <Sidebar variant="sidebar" collapsible="offcanvas" className="bg-gray-50 border-r border-gray-200">
+    <SidebarProvider>
+    <Sidebar variant="sidebar" collapsible="offcanvas"         className="bg-gray-50 border-r border-gray-200 w-64 flex md:flex !block !w-[250px]"
+
+>
       <SidebarHeader className="p-3">
         <button 
           onClick={handleNewChat} 
@@ -151,6 +155,7 @@ const ChatSidebar = () => {
         ChatBot Assistant v1.0
       </SidebarFooter>
     </Sidebar>
+    </SidebarProvider>
   );
 };
 
