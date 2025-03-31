@@ -12,7 +12,6 @@ import ChatPage from './Components/ChatPage/Chatpage'
 import ScholarshipComparison from './Components/Comparison/ScholarshipComparison'
 import ChatFullPage from './Components/ChatBotUi/ChatFullPage'
 
-
 function App() {
   return (
     <>

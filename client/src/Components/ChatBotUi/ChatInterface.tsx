@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Send } from "lucide-react";
 import ChatMessage from "./ChatMessage";
 import { cn } from "../../lib/utils";
-import { useToast } from "@/hooks/use-toast";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import { useToast } from "../../hooks/use-toast";
+import { SidebarTrigger } from "../UI/Sidebar";
 
 type Message = {
   id: number;
@@ -40,7 +40,7 @@ const ChatInterface = () => {
     if (!textarea) return;
     
     textarea.style.height = "auto";
-    textarea.style.height = `${Math.min(textarea.scrollHeight, 160)}px`;
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 80)}px`;
   }, [newMessage]);
 
   const handleSendMessage = () => {
@@ -99,50 +99,48 @@ const ChatInterface = () => {
         <div className="w-7"></div> {/* Spacer for alignment */}
       </div>
       
-      <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 bg-gray-50">
-        {messages.map((message) => (
-          <ChatMessage key={message.id} message={message} />
-        ))}
-        
-        {isTyping && (
-          <div className="flex items-center space-x-2 text-gray-500 text-sm animate-pulse ml-10">
-            <div className="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center">
-              <div className="dot-flashing"></div>
+      <div className="flex-1 overflow-y-auto bg-white">
+        <div className="pb-20 pt-4">
+          {messages.map((message) => (
+            <ChatMessage key={message.id} message={message} />
+          ))}
+          
+          {isTyping && (
+            <div className="flex items-center space-x-2 text-gray-500 text-sm animate-pulse px-4 py-2">
+              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center border border-gray-200">
+                <div className="dot-flashing"></div>
+              </div>
+              <span>ChatBot is typing...</span>
             </div>
-            <span>AI is thinking...</span>
-          </div>
-        )}
-        
-        <div ref={messagesEndRef} />
+          )}
+          
+          <div ref={messagesEndRef} />
+        </div>
       </div>
 
-      <div className="border-t p-4 bg-white shadow-lg">
-        <div className="max-w-3xl mx-auto relative">
-          <textarea
-            ref={textareaRef}
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Type a message..."
-            className={cn(
-              "flex w-full rounded-lg border border-input bg-background px-4 py-3 text-sm",
-              "ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none",
-              "focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:border-transparent",
-              "disabled:cursor-not-allowed disabled:opacity-50 min-h-[56px] max-h-[160px] resize-none pr-12",
-              "transition-all duration-200 ease-in-out"
-            )}
-            rows={1}
-          />
-          <button 
-            onClick={handleSendMessage} 
-            disabled={!newMessage.trim()}
-            className="absolute right-2 bottom-2.5 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-lg p-2 h-auto transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
-            aria-label="Send message"
-          >
-            <Send className="h-5 w-5" />
-          </button>
+      <div className="border-t absolute bottom-0 left-0 right-0 bg-white bg-opacity-95 backdrop-blur-sm">
+        <div className="p-3 flex items-center">
+          <div className="relative flex-1 rounded-full border overflow-hidden focus-within:ring-2 focus-within:ring-purple-500 transition-all duration-200">
+            <textarea
+              ref={textareaRef}
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Type a message..."
+              className="w-full py-3 pl-4 pr-12 text-gray-700 focus:outline-none resize-none max-h-[80px] bg-transparent"
+              rows={1}
+            />
+            <button 
+              onClick={handleSendMessage} 
+              disabled={!newMessage.trim()}
+              className="absolute right-1 bottom-1.5 p-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 text-white transition-all duration-300 hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              aria-label="Send message"
+            >
+              <Send className="h-5 w-5" />
+            </button>
+          </div>
         </div>
-        <div className="text-xs text-center text-gray-500 mt-2">
+        <div className="text-xs text-center text-gray-500 pb-2">
           ChatBot may produce inaccurate information about people, places, or facts.
         </div>
       </div>

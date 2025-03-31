@@ -1,5 +1,5 @@
 import React from "react";
-import { Plus, MessageSquare, Sparkles } from "lucide-react";
+import { Plus, MessageSquare } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -70,27 +70,27 @@ const ChatSidebar = () => {
   const groupedChats = groupChatsByDate(MOCK_CHAT_HISTORY);
 
   return (
-    <Sidebar variant="sidebar" collapsible="offcanvas">
+    <Sidebar variant="sidebar" collapsible="offcanvas" className="bg-gray-50 border-r border-gray-200">
       <SidebarHeader className="p-3">
         <button 
           onClick={handleNewChat} 
-          className="w-full justify-start flex items-center px-4 py-2 rounded-md text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 transition-all duration-300 hover:shadow-md"
+          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-md text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:shadow-md transition-all duration-300"
         >
-          <Plus className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:rotate-90" />
+          <Plus className="h-4 w-4" />
           New Chat
         </button>
       </SidebarHeader>
       
-      <SidebarContent>
+      <SidebarContent className="px-2">
         {groupedChats.today.length > 0 && (
           <SidebarGroup>
-            <SidebarGroupLabel className="text-gradient font-medium">Today</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-xs font-medium text-gray-500 px-2 py-1">Today</SidebarGroupLabel>
             <SidebarMenu>
               {groupedChats.today.map((chat) => (
                 <SidebarMenuItem key={chat.id}>
-                  <SidebarMenuButton className="transition-all duration-200 hover:bg-purple-50 hover:border-l-2 hover:border-purple-500 hover-lift">
-                    <MessageSquare className="h-4 w-4 mr-2 text-purple-500" />
-                    <span>{chat.title}</span>
+                  <SidebarMenuButton className="px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-gray-200 text-gray-700">
+                    <MessageSquare className="h-4 w-4 mr-2 text-gray-500" />
+                    <span className="text-sm">{chat.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -100,13 +100,13 @@ const ChatSidebar = () => {
         
         {groupedChats.yesterday.length > 0 && (
           <SidebarGroup>
-            <SidebarGroupLabel className="text-gradient font-medium">Yesterday</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-xs font-medium text-gray-500 px-2 py-1">Yesterday</SidebarGroupLabel>
             <SidebarMenu>
               {groupedChats.yesterday.map((chat) => (
                 <SidebarMenuItem key={chat.id}>
-                  <SidebarMenuButton className="transition-all duration-200 hover:bg-purple-50 hover:border-l-2 hover:border-purple-500 hover-lift">
-                    <MessageSquare className="h-4 w-4 mr-2 text-purple-500" />
-                    <span>{chat.title}</span>
+                  <SidebarMenuButton className="px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-gray-200 text-gray-700">
+                    <MessageSquare className="h-4 w-4 mr-2 text-gray-500" />
+                    <span className="text-sm">{chat.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -116,13 +116,13 @@ const ChatSidebar = () => {
         
         {groupedChats.previousWeek.length > 0 && (
           <SidebarGroup>
-            <SidebarGroupLabel className="text-gradient font-medium">Previous 7 Days</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-xs font-medium text-gray-500 px-2 py-1">Previous 7 Days</SidebarGroupLabel>
             <SidebarMenu>
               {groupedChats.previousWeek.map((chat) => (
                 <SidebarMenuItem key={chat.id}>
-                  <SidebarMenuButton className="transition-all duration-200 hover:bg-purple-50 hover:border-l-2 hover:border-purple-500 hover-lift">
-                    <MessageSquare className="h-4 w-4 mr-2 text-purple-500" />
-                    <span>{chat.title}</span>
+                  <SidebarMenuButton className="px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-gray-200 text-gray-700">
+                    <MessageSquare className="h-4 w-4 mr-2 text-gray-500" />
+                    <span className="text-sm">{chat.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -132,13 +132,13 @@ const ChatSidebar = () => {
         
         {groupedChats.earlier.length > 0 && (
           <SidebarGroup>
-            <SidebarGroupLabel className="text-gradient font-medium">Earlier</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-xs font-medium text-gray-500 px-2 py-1">Earlier</SidebarGroupLabel>
             <SidebarMenu>
               {groupedChats.earlier.map((chat) => (
                 <SidebarMenuItem key={chat.id}>
-                  <SidebarMenuButton className="transition-all duration-200 hover:bg-purple-50 hover:border-l-2 hover:border-purple-500 hover-lift">
-                    <MessageSquare className="h-4 w-4 mr-2 text-purple-500" />
-                    <span>{chat.title}</span>
+                  <SidebarMenuButton className="px-2 py-1.5 rounded-md transition-all duration-200 hover:bg-gray-200 text-gray-700">
+                    <MessageSquare className="h-4 w-4 mr-2 text-gray-500" />
+                    <span className="text-sm">{chat.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -147,11 +147,8 @@ const ChatSidebar = () => {
         )}
       </SidebarContent>
       
-      <SidebarFooter className="p-3 border-t">
-        <div className="flex items-center justify-center text-xs text-gray-500 hover-lift">
-          <Sparkles className="h-3 w-3 mr-1 text-purple-400" />
-          <span>ChatBot Assistant v1.0</span>
-        </div>
+      <SidebarFooter className="p-3 border-t text-xs text-center text-gray-500">
+        ChatBot Assistant v1.0
       </SidebarFooter>
     </Sidebar>
   );

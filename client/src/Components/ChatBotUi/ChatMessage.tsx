@@ -18,41 +18,43 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
   const isUser = message.sender === "user";
   
   return (
-    <div className="max-w-3xl mx-auto w-full animate-fade-in">
+    <div className="animate-fade-in">
       <div className={cn(
-        "flex transition-all duration-300 ease-in-out hover:translate-x-1",
-        isUser ? "bg-white" : "bg-gray-50"
+        "flex px-4 py-3",
+        isUser ? "justify-end" : "justify-start"
       )}>
-        <div className="flex items-start space-x-4 p-4 w-full">
-          <div
-            className={cn(
-              "w-7 h-7 rounded-full flex items-center justify-center shrink-0 shadow-md transition-transform duration-300 hover:scale-110",
-              isUser ? "bg-gradient-to-r from-purple-500 to-indigo-600" : "bg-gradient-to-r from-gray-200 to-gray-300"
-            )}
-          >
-            {isUser ? (
-              <User className="h-4 w-4 text-white" />
-            ) : (
-              <Bot className="h-4 w-4 text-gray-600" />
-            )}
-          </div>
+        <div className="flex max-w-[80%] items-start space-x-2">
+          {!isUser && (
+            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0 border border-gray-200">
+              <Bot className="h-5 w-5 text-gray-600" />
+            </div>
+          )}
           
-          <div className="flex-1 space-y-2">
-            <div className="flex items-center">
-              <h3 className="font-medium text-sm">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2">
+              <span className="text-sm font-medium text-gray-700">
                 {isUser ? "You" : "ChatBot"}
-              </h3>
-              <span className="text-xs text-gray-500 ml-2">
+              </span>
+              <span className="text-xs text-gray-500">
                 {format(message.timestamp, "h:mm a")}
               </span>
             </div>
+            
             <div className={cn(
-              "text-sm whitespace-pre-wrap break-words p-3 rounded-lg shadow-sm",
-              isUser ? "bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100" : "bg-white border border-gray-100"
+              "py-2 px-3 rounded-2xl break-words",
+              isUser 
+                ? "bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-tr-none" 
+                : "bg-gray-100 text-gray-800 rounded-tl-none border border-gray-200"
             )}>
               {message.text}
             </div>
           </div>
+          
+          {isUser && (
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center shrink-0">
+              <User className="h-5 w-5 text-white" />
+            </div>
+          )}
         </div>
       </div>
     </div>

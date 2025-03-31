@@ -1,7 +1,7 @@
 import React from "react";
-import ChatInterface from './ChatInterface.tsx'
+import ChatInterface from "../ChatbotUi/ChatInterface.tsx";
 import ChatSidebar from "./ChatSidebar.tsx";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider } from "../UI/Sidebar.tsx";
 
 const Index = () => {
   return (
