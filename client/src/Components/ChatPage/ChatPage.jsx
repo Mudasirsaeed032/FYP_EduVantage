@@ -5,6 +5,7 @@ import Footer from '../Boilerplate/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import ChatUI from '../ChatUi/ChatUi';
+import ChatBot from '../ChatBotUi/ChatBot';
 import '../Home/Home.css'
 
 export default function ChatPage() {
@@ -58,10 +59,7 @@ export default function ChatPage() {
                         <div className="col-12 mb-2">
                             <div className="chatbot-container mx-auto">
                                 {/* Pass the initialQuery as a key to force re-mount if query changes */}
-                                <ChatUI 
-                                    key={`chat-${initialQuery}`} 
-                                    initialMessage={initialQuery}
-                                />
+                                <ChatBot/>
                             </div>
                         </div>
                     </div>

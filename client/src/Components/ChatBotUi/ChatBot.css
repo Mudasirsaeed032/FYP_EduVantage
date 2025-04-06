@@ -1,0 +1,120 @@
+/* Main container */
+.chatbot-container {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header section */
+  .chatbot-header {
+    background-color: #0f172a;
+    color: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .chatbot-icon {
+    background-color: white;
+    padding: 8px;
+    border-radius: 50%;
+    color: #0f172a;
+  }
+  
+  .chatbot-title {
+    font-weight: 600;
+  }
+  
+  .chatbot-subtitle {
+    font-size: 12px;
+    color: #cbd5e1;
+  }
+  
+  /* Messages container */
+  .chatbot-messages {
+    padding: 16px;
+    height: 300px;
+    overflow-y: auto;
+    background-color: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  /* Message styling */
+  .chatbot-message {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .chatbot-message.bot-message {
+    justify-content: flex-start;
+  }
+  
+  .chatbot-message.user-message {
+    justify-content: flex-end;
+  }
+  
+  .message-bubble {
+    max-width: 240px;
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 14px;
+  }
+  
+  .user-bubble {
+    background-color: #3b82f6;
+    color: white;
+    border-bottom-left-radius: 0;
+  }
+  
+  .bot-bubble {
+    background-color: #e5e7eb;
+    color: #1f2937;
+    border-bottom-right-radius: 0;
+  }
+  
+  .message-timestamp {
+    font-size: 10px;
+    color: #9ca3af;
+    margin-top: 4px;
+  }
+  
+  /* Input section */
+  .chatbot-input {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  .input-field {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: 1px solid #e5e5e5;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .input-field:focus {
+    border-color: #3b82f6;
+  }
+  
+  .send-button {
+    background-color: transparent;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+  }
+  
+  .send-button:hover {
+    color: #3b82f6;
+  }
+  
