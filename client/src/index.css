@@ -242,3 +242,21 @@ button:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
   background: #d4d4d8;
 }
+
+/* Prevent text zoom on mobile */
+@media screen and (max-width: 768px) {
+  input,
+  button {
+    font-size: 16px;
+  }
+}
+
+/* Improve touch targets on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  [role="button"],
+  .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
