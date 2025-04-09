@@ -161,15 +161,15 @@ button:focus-visible {
   }
 }
 
-@layer base {
+/* @layer base {
   * {
-    @apply border-border;
+    @apply border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];    
   }
-}
+} */
 
 @layer components {
   .dot-typing {
@@ -210,10 +210,10 @@ button:focus-visible {
   }
 }
 
-@keyframes fade-in {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(5px);
   }
   to {
     opacity: 1;
@@ -221,6 +221,42 @@ button:focus-visible {
   }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4d4d8;
+}
+
+/* Prevent text zoom on mobile */
+@media screen and (max-width: 768px) {
+  input,
+  button {
+    font-size: 16px;
+  }
+}
+
+/* Improve touch targets on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  [role="button"],
+  .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
