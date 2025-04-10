@@ -151,24 +151,24 @@ const FullChat = () => {
         </div>
 
         {/* Messages */}
-        <div className="flex-1 p-5 overflow-y-auto bg-gray-900">
+        <div className="flex-1 py-3 overflow-y-auto bg-gray-900">
           {messages.map((msg, idx) => (
             <div
               key={idx}
-              className={`flex mb-4 ${msg.from === "user" ? "justify-end" : "justify-start"} animate-fadeIn`}
+              className={`flex mb-4 px-5 ${msg.from === "user" ? "justify-end" : "justify-start"} animate-fadeIn`}
             >
               <div
-                className={`px-4 py-2.5 ${msg.from === "user" ? "max-w-lg" : "w-full"} rounded-2xl ${msg.from === "user" ? "bg-[#3BAF4A] text-white" : "bg-gray-800 text-white"}`}
+                className={`px-3 py-2.5 ${msg.from === "user" ? "max-w-lg" : "w-full"} rounded-2xl ${msg.from === "user" ? "bg-[#3BAF4A] text-white" : " text-white"}`}
               >
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]} // Enable GitHub-style markdown
                   components={{
                     // Customizing how markdown elements should be rendered
-                    p: ({ node, children }) => <p className="mb-3 text-sm">{children}</p>, // Paragraphs with margin
+                    p: ({ node, children }) => <p className="mb-3 text-md">{children}</p>, // Paragraphs with margin
                     strong: ({ node, children }) => <strong className="font-semibold text-white">{children}</strong>, // Bold text
-                    ul: ({ node, children }) => <ul className="list-disc ml-5 text-sm">{children}</ul>, // Unordered list with proper styling
-                    ol: ({ node, children }) => <ol className="list-decimal ml-5 text-sm">{children}</ol>, // Ordered list
-                    li: ({ node, children }) => <li className="text-sm">{children}</li>, // List item styling
+                    ul: ({ node, children }) => <ul className="list-disc ml-5 text-lg">{children}</ul>, // Unordered list with proper styling
+                    ol: ({ node, children }) => <ol className="list-decimal ml-5 text-lg">{children}</ol>, // Ordered list
+                    li: ({ node, children }) => <li className="text-lg">{children}</li>, // List item styling
                   }}
                 >
                   {msg.text}
@@ -181,7 +181,7 @@ const FullChat = () => {
           ))}
           {isTyping && (
             <div className="flex justify-start animate-fadeIn mb-4">
-              <div className="px-4 py-2.5 rounded-2xl bg-gray-800 text-white">
+              <div className="mx-5 px-4 py-2.5 rounded-2xl bg-gray-800 text-white">
                 <div className="flex space-x-1">
                   <div
                     className="w-2 h-2 rounded-full bg-[#3BAF4A] animate-bounce"
