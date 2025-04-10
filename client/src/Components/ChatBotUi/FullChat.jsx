@@ -129,7 +129,7 @@ const FullChat = () => {
         {/* Messages */}
         <div className="flex-1 p-5 overflow-y-auto bg-gray-900">
           {messages.map((msg, idx) => (
-            <div
+            <div  
               key={idx}
               className={`flex mb-4 ${msg.from === "user" ? "justify-end" : "justify-start"} animate-fadeIn`}
             >
