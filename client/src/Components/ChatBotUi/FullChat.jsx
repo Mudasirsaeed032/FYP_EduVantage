@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Send, Plus, MessageSquare, GraduationCap } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from 'remark-gfm';
 
 const FullChat = () => {
   const [recentChats, setRecentChats] = useState([
@@ -25,30 +27,30 @@ const FullChat = () => {
 
   const handleSend = async () => {
     if (!input.trim()) return;
-  
+
     const now = new Date();
     const timeString = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-  
+
     const newMessage = { from: "user", text: input, time: timeString };
     setMessages([...messages, newMessage]);
     setInput("");
-  
+
     // Simulate bot typing
     setIsTyping(true);
-  
+
     try {
       // Send request to the backend API
       const response = await fetch(`http://localhost:8000/ask?query=${encodeURIComponent(input)}`);
-  
+
       // Check if the response is ok (status 200-299)
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
-  
+
       // Parse the JSON response from the backend
       const data = await response.json();
       console.log("API Response:", data);  // Log the response for debugging
-  
+
       // Check if the response has the expected structure
       if (data?.response?.text) {
         const botMessage = data.response.text;
@@ -70,7 +72,7 @@ const FullChat = () => {
     } finally {
       setIsTyping(false);
     }
-  };  
+  };
 
 
   const handleChatSelect = (chat) => {
@@ -120,8 +122,8 @@ const FullChat = () => {
                 key={chat.id}
                 onClick={() => handleChatSelect(chat)}
                 className={`cursor-pointer py-2 px-3 rounded-md transition-all duration-200 flex items-start gap-2 ${chat.id === currentChat.id
-                    ? "bg-gray-800 text-white"
-                    : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                  ? "bg-gray-800 text-white"
+                  : "text-gray-300 hover:bg-gray-800 hover:text-white"
                   }`}
               >
                 <MessageSquare
@@ -156,10 +158,21 @@ const FullChat = () => {
               className={`flex mb-4 ${msg.from === "user" ? "justify-end" : "justify-start"} animate-fadeIn`}
             >
               <div
-                className={`px-4 py-2.5 max-w-md rounded-2xl ${msg.from === "user" ? "bg-[#3BAF4A] text-white" : "bg-gray-800 text-white"
-                  }`}
+                className={`px-4 py-2.5 ${msg.from === "user" ? "max-w-lg" : "w-full"} rounded-2xl ${msg.from === "user" ? "bg-[#3BAF4A] text-white" : "bg-gray-800 text-white"}`}
               >
-                <div className="text-sm">{msg.text}</div>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]} // Enable GitHub-style markdown
+                  components={{
+                    // Customizing how markdown elements should be rendered
+                    p: ({ node, children }) => <p className="mb-3 text-sm">{children}</p>, // Paragraphs with margin
+                    strong: ({ node, children }) => <strong className="font-semibold text-white">{children}</strong>, // Bold text
+                    ul: ({ node, children }) => <ul className="list-disc ml-5 text-sm">{children}</ul>, // Unordered list with proper styling
+                    ol: ({ node, children }) => <ol className="list-decimal ml-5 text-sm">{children}</ol>, // Ordered list
+                    li: ({ node, children }) => <li className="text-sm">{children}</li>, // List item styling
+                  }}
+                >
+                  {msg.text}
+                </ReactMarkdown>
                 <div className={`text-xs mt-1 ${msg.from === "user" ? "text-green-100" : "text-gray-400"}`}>
                   {msg.time}
                 </div>
