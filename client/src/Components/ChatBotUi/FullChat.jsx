@@ -1,9 +1,13 @@
 import { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Send, Plus, MessageSquare, GraduationCap } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from 'remark-gfm';
+import remarkGfm from "remark-gfm";
 
 const FullChat = () => {
+  const location = useLocation();
+  const initialQuery = location?.state?.query || "";
+
   const [recentChats, setRecentChats] = useState([
     { id: 1, name: "Course Selection Help", lastMessage: "How can I assist you with your course selection today?" },
     { id: 2, name: "Scholarship Information", lastMessage: "Here are the scholarship deadlines for this semester." },
@@ -20,10 +24,49 @@ const FullChat = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Auto-scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  const hasSentInitialQuery = useRef(false);
+
+useEffect(() => {
+  if (initialQuery.trim() && !hasSentInitialQuery.current) {
+    hasSentInitialQuery.current = true;
+
+    const now = new Date();
+    const timeString = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+
+    const newMessage = { from: "user", text: initialQuery, time: timeString };
+    setMessages((prev) => [...prev, newMessage]);
+    fetchBotReply(initialQuery, timeString);
+  }
+}, [initialQuery]);
+
+
+  const fetchBotReply = async (message, timeString) => {
+    setIsTyping(true);
+    try {
+      const response = await fetch(`http://localhost:8000/ask?query=${encodeURIComponent(message)}`);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      if (data?.response?.text) {
+        setMessages((prev) => [...prev, { from: "bot", text: data.response.text, time: timeString }]);
+      } else if (data?.error) {
+        throw new Error(`Backend Error: ${data.error}`);
+      } else {
+        throw new Error("Unexpected response structure.");
+      }
+    } catch (error) {
+      console.error("Error fetching response:", error);
+      setMessages((prev) => [...prev, { from: "bot", text: `Error: ${error.message}`, time: timeString }]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -32,48 +75,10 @@ const FullChat = () => {
     const timeString = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
     const newMessage = { from: "user", text: input, time: timeString };
-    setMessages([...messages, newMessage]);
+    setMessages((prev) => [...prev, newMessage]);
     setInput("");
-
-    // Simulate bot typing
-    setIsTyping(true);
-
-    try {
-      // Send request to the backend API
-      const response = await fetch(`http://localhost:8000/ask?query=${encodeURIComponent(input)}`);
-
-      // Check if the response is ok (status 200-299)
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
-      }
-
-      // Parse the JSON response from the backend
-      const data = await response.json();
-      console.log("API Response:", data);  // Log the response for debugging
-
-      // Check if the response has the expected structure
-      if (data?.response?.text) {
-        const botMessage = data.response.text;
-        setMessages((prev) => [
-          ...prev,
-          { from: "bot", text: botMessage, time: timeString },
-        ]);
-      } else if (data?.error) {
-        throw new Error(`Backend Error: ${data.error}`);
-      } else {
-        throw new Error("Unexpected response structure.");
-      }
-    } catch (error) {
-      console.error("Error fetching the response:", error);
-      setMessages((prev) => [
-        ...prev,
-        { from: "bot", text: `Error: ${error.message}`, time: timeString },
-      ]);
-    } finally {
-      setIsTyping(false);
-    }
+    fetchBotReply(input, timeString);
   };
-
 
   const handleChatSelect = (chat) => {
     setCurrentChat(chat);
@@ -84,7 +89,6 @@ const FullChat = () => {
     <div className="flex h-screen w-screen font-sans bg-gray-900 overflow-hidden">
       {/* Sidebar */}
       <div className="w-62 bg-gray-900 border-r border-gray-800 flex flex-col">
-        {/* Logo */}
         <div className="py-4 px-3 flex items-center gap-1 border-b border-gray-800">
           <GraduationCap className="h-8 w-8 text-[#3BAF4A]" />
           <span className="text-white font-bold text-3xl">
@@ -92,7 +96,6 @@ const FullChat = () => {
           </span>
         </div>
 
-        {/* New Chat Button */}
         <div className="p-4">
           <button
             className="w-full bg-[#3BAF4A] hover:bg-[#35a044] text-white py-2 px-4 rounded-md flex items-center justify-center gap-2 transition-colors duration-200"
@@ -111,7 +114,6 @@ const FullChat = () => {
           </button>
         </div>
 
-        {/* Chat List */}
         <div className="flex-1 overflow-y-auto">
           <div className="px-4 py-2">
             <p className="text-xs font-medium text-gray-400 mb-2">Recent Conversations</p>
@@ -136,13 +138,11 @@ const FullChat = () => {
           </div>
         </div>
 
-        {/* Version */}
         <div className="p-3 text-xs text-gray-500 border-t border-gray-800">EduVantage Assistant v1.0</div>
       </div>
 
       {/* Chat Window */}
       <div className="flex-1 flex flex-col bg-gray-900">
-        {/* Header */}
         <div className="p-4 bg-gray-900 border-b border-gray-800 flex items-center justify-between">
           <div className="flex items-center">
             <h4 className="text-base font-medium text-white">{currentChat.name}</h4>
@@ -150,7 +150,6 @@ const FullChat = () => {
           </div>
         </div>
 
-        {/* Messages */}
         <div className="flex-1 py-3 overflow-y-auto bg-gray-900">
           {messages.map((msg, idx) => (
             <div
@@ -158,7 +157,7 @@ const FullChat = () => {
               className={`flex mb-4 px-5 ${msg.from === "user" ? "justify-end" : "justify-start"} animate-fadeIn`}
             >
               <div
-                className={`px-3 py-2.5 ${msg.from === "user" ? "max-w-lg" : "w-full"} rounded-2xl ${msg.from === "user" ? "bg-[#3BAF4A] text-white" : " text-white"}`}
+                className={`px-3 py-2.5 ${msg.from === "user" ? "max-w-lg" : "w-full"} rounded-2xl ${msg.from === "user" ? "bg-[#3BAF4A] text-white" : "text-white"}`}
               >
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]} // Enable GitHub-style markdown
@@ -173,9 +172,6 @@ const FullChat = () => {
                 >
                   {msg.text}
                 </ReactMarkdown>
-                <div className={`text-xs mt-1 ${msg.from === "user" ? "text-green-100" : "text-gray-400"}`}>
-                  {msg.time}
-                </div>
               </div>
             </div>
           ))}
@@ -202,24 +198,22 @@ const FullChat = () => {
           <div ref={messagesEndRef} />
         </div>
 
-
-        {/* Footer */}
-        <div className="p-2 text-xs text-gray-500 border-t border-gray-800">
-          <div className="flex items-center space-x-2">
-            <input
-              type="text"
-              placeholder="Type a message..."
-              className="flex-1 px-3 py-2 bg-gray-800 text-white rounded-md outline-none"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <button
-              onClick={handleSend}
-              className="p-2 rounded-full bg-[#3BAF4A] hover:bg-[#35a044] transition-colors"
-            >
-              <Send size={18} className="text-white" />
-            </button>
-          </div>
+        {/* Input Field */}
+        <div className="p-4 border-t border-gray-800 bg-gray-900 flex items-center gap-2">
+          <input
+            type="text"
+            className="flex-1 p-2 bg-gray-800 text-white rounded-md outline-none"
+            placeholder="Type your message..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleSend()}
+          />
+          <button
+            className="bg-[#3BAF4A] hover:bg-[#35a044] text-white p-2 rounded-md"
+            onClick={handleSend}
+          >
+            <Send size={18} />
+          </button>
         </div>
       </div>
     </div>

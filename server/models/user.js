@@ -15,7 +15,17 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    chats: [
+        {
+            role: String,
+            content: String,
+            timestamp: {
+                type: Date,
+                default: Date.now
+            }
+        }
+    ]
 });
 
 const User = mongoose.model('User', userSchema);
