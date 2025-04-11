@@ -2,17 +2,25 @@ import React from 'react';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.css';
+import { Send, Plus, MessageSquare, GraduationCap } from "lucide-react";
+
 
 import { Link } from 'react-router-dom';
 
 const navItems = ['Home', 'Scholarships', 'About', 'Contact Us'];
 
 export default function Navbar({ user, handleLogout }) {
-    
+
     return (
         <nav id='mainNav' className="navbar navbar-expand-lg navbar-dark">
             <div className="navbar-brand">
-                <Link className='nav-link' to='/home'><i className="fas fa-graduation-cap"> <span id="Nav-Eduvantage">EduVantage</span></i></Link>
+            <div className="flex items-center gap-1 ">
+          <GraduationCap className="h-8 w-8 text-[#3BAF4A]" />
+          <Link className='nav-link' to='/home'><span className="text-white font-bold text-3xl">
+            Edu<span className="text-[#3BAF4A]">Vantage</span>
+          </span>
+          </Link>
+        </div>
             </div>
             <button className="navbar-toggler"
                 type="button"
@@ -41,7 +49,7 @@ export default function Navbar({ user, handleLogout }) {
                         );
                     })}
                 </ul>
-            </div>  
+            </div>
             {!user ? <div className='Signup-Navbar'>
                 <div className="auth-buttons">
                     <Link to="/login" className="login-button">Login</Link>

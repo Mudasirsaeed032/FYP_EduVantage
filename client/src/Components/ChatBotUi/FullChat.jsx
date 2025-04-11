@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Send, Plus, MessageSquare, GraduationCap } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { Link } from "react-router-dom";
 
 const FullChat = () => {
   const location = useLocation();
@@ -91,9 +92,10 @@ useEffect(() => {
       <div className="w-62 bg-gray-900 border-r border-gray-800 flex flex-col">
         <div className="py-4 px-3 flex items-center gap-1 border-b border-gray-800">
           <GraduationCap className="h-8 w-8 text-[#3BAF4A]" />
-          <span className="text-white font-bold text-3xl">
+          <Link className='nav-link' to='/home'><span className="text-white font-bold text-3xl">
             Edu<span className="text-[#3BAF4A]">Vantage</span>
           </span>
+          </Link>
         </div>
 
         <div className="p-4">
