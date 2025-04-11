@@ -43,7 +43,7 @@ export default function Home() {
             alert('Please Enter a Query!');
             return;
         }
-        navigate('/chatpage', {state: {query: searchQuery}});
+        navigate('/fullchat', {state: {query: searchQuery}});
     }
 
     if (isLoading) {

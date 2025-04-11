@@ -24,13 +24,9 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/recommendation' element={<Recommendation />} />
-          <Route path='/comparison' element={<Comparison />} />
           <Route path='/profile/:id' element={<UserProfile />} />
           <Route path='/scholarship' element={<Scholarship />} />
           <Route path='/scholarshipcomparison' element={<ScholarshipComparison />} />
-          <Route path='/chat' element={<ChatUI />} />
-          <Route path='/chatpage' element={<ChatPage />} />
-          <Route path='/chatbot' element={<ChatBot />} />
           <Route path='/fullchat' element={<FullChat/>}/>
         </Routes>
       </BrowserRouter>
