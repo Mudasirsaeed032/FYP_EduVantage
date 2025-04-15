@@ -71,8 +71,7 @@ async def retrieve_university_info(ctx: RunContext[UniversityAIDeps], query: str
 
     embedding = await get_embedding(query, ctx.deps.openai_client)
 
-    # Attempt to extract university name from query (simple keyword match)
-    # Example assumes university name is mentioned explicitly like "about NUST"
+        # Example assumes university name is mentioned explicitly like "about NUST"
     university_keywords = ["nust", "fast", "lums", "comsats", "air", "iba", "giki","stanford","oxford", "mit", "caltech", "harvard", "cambridge", "berkeley", "princeton"]
     matched_uni = next(
         (uni for uni in university_keywords if re.search(rf"\b{re.escape(uni)}\b", query.lower())),
@@ -148,7 +147,7 @@ async def list_universities(ctx: RunContext[UniversityAIDeps]) -> List[str]:
 async def tavily_web_search(ctx: RunContext[UniversityAIDeps], query: str) -> str:
     import requests
 
-    print("[LOG] Calling Tavily for web search...")
+    print("[LOG] Getting results...")
     headers = {
         "Authorization": f"Bearer {TAVILY_API_KEY}",
         "Content-Type": "application/json"
@@ -166,7 +165,6 @@ async def tavily_web_search(ctx: RunContext[UniversityAIDeps], query: str) -> st
         "include_domains": [],
         "exclude_domains": []
     }
-
     try:
         response = requests.post("https://api.tavily.com/search", json=payload, headers=headers)
         response.raise_for_status()

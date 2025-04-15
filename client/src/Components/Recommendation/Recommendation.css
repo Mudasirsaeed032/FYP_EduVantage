@@ -1,125 +1,344 @@
-/* Recommendation container */
-.recommendation-container {
-    width: 100vw;
-    height: calc(100vh - 60px);
-    /* Adjust height to account for the navbar */
-    background-color: #f5f5f5;
-    text-align: center;
-    background-image: url('../../assets/home.png');
-    padding-top: 60px;
-    /* Adjust this value based on your Navbar's height */
+/* Base styles */
+:root {
+    --primary-color: #3baf4a;
+    --primary-dark: #2e8c39;
+    --primary-light: #a7e1af;
+    --secondary-color: #f8f9fa;
+    --text-dark: #333;
+    --text-medium: #666;
+    --text-light: #777;
+    --white: #fff;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s ease;
 }
 
-.recommendation-container h2 {
-    font-family: 'Poppins', sans-serif;
-    color: #3BAF4A;
-    margin-bottom: 40px;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Main container */
+#main-recommendation {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Recommendation container */
+.recommendation-container {
+    flex: 1;
+    width: 100%;
+    background-color: var(--secondary-color);
+    padding: 40px 20px 80px;
+    box-sizing: border-box;
+    background-image: url("../../assets/home.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Header section */
+.recommendation-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.recommendation-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.recommendation-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-medium);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* University cards layout */
 .university-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Card styling */
 .card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    text-align: left;
+    position: relative;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid transparent;
 }
 
 .card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-selected {
+    border-color: var(--primary-color);
+}
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
 }
 
 .card-img {
     width: 100%;
-    height: 180px;
+    height: 100%;
     object-fit: cover;
+    transition: var(--transition);
 }
 
+.card:hover .card-img {
+    transform: scale(1.05);
+}
+
+/* Best fit indicator */
+.best-fit-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.best-fit-indicator span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-medium);
+    margin-top: 5px;
+}
+
+.best-fit-circle {
+    width: 60px;
+    height: 60px;
+}
+
+.best-fit-circle svg {
+    width: 100%;
+    height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: #eee;
+    stroke-width: 3.8;
+}
+
+.circle {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 3.8;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.percentage {
+    fill: var(--primary-color);
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+/* Card content */
 .card-content {
-    padding: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .card-title {
     font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
+    color: var(--text-dark);
+    margin: 0 0 10px;
+    line-height: 1.3;
 }
 
 .card-location {
     font-size: 1rem;
-    color: #666;
-    margin-bottom: 10px;
+    color: var(--text-medium);
+    margin: 0 0 15px;
+    display: flex;
+    align-items: center;
 }
 
 .card-description {
-    font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin: 0 0 20px;
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* Card actions */
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
 }
 
 .card-link {
-    font-size: 1rem;
-    color: #3BAF4A;
+    font-size: 0.95rem;
+    color: var(--primary-color);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: var(--transition);
+    padding: 8px 0;
 }
 
 .card-link:hover {
+    color: var(--primary-dark);
     text-decoration: underline;
 }
 
-.best-fit {
-    font-size: 1.1rem;
-    color: #3BAF4A;
-    margin-bottom: 10px;
-}
-
-/* Compare Checkbox */
-.compare-checkbox {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.compare-checkbox input {
-    margin-right: 8px;
-}
-
-.compare-checkbox :hover {
+.compare-toggle {
+    background-color: transparent;
+    color: var(--text-medium);
+    border: 2px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
 }
 
-/* Compare Now Prompt */
+.compare-toggle:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.compare-toggle.selected {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.compare-toggle:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Compare prompt */
 .compare-prompt {
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 15px 20px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.selected-count {
+    font-size: 1rem;
+    color: var(--text-medium);
+    font-weight: 500;
 }
 
 .compare-btn {
-    background-color: #3BAF4A;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
 }
 
-.compare-btn:hover {
-    background-color: #2e8c39;
+.compare-btn:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
 }
 
-#main-recommendation {
-    margin-top: 20px;
-    padding: 0px;
-    width: 100vw;
-    height: 100vh;
+.compare-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .recommendation-header h2 {
+        font-size: 2rem;
+    }
+
+    .university-cards {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+
+    .compare-prompt {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .card-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .card-link,
+    .compare-toggle {
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .university-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
