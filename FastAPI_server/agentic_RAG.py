@@ -155,11 +155,11 @@ async def tavily_web_search(ctx: RunContext[UniversityAIDeps], query: str) -> st
     }
     payload = {
         "query": query,
-        "search_depth": "basic",
+        "search_depth": "advanced",
         "chunks_per_source": 3,
         "max_results": 1,
         "days": 7,
-        "include_answer": True,
+        "include_answer": "advanced",
         "include_raw_content": False,
         "include_images": False,
         "include_image_descriptions": False,

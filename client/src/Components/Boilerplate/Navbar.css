@@ -1,250 +1,313 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-.navbar-brand {
-    position: absolute;
-    left: 100px;
-    margin-top: 0.3vw;
-    color: white;
-}
-
-
-#mainNav .navbar-brand {
-    position: absolute;
-    top: 0px;
-    left: 28px;
-    display: flex;
-    align-items: center;
-    font-size: 1.8rem;
-    /* Slightly increased size for visibility */
-    color: #28a745;
-    /* Green color */
-
-}
-
-#mainNav .navbar-brand p {
-    color: white;
-    font-family: 'Poppins';
-}
-
-#mainNav .navbar-brand i {
-    margin-right: 10px;
-    /* Add spacing between the icon and any potential text */
-    color: #28a745;
-    /* Green color */
-    text-shadow: 0 0 10px rgba(40, 167, 69, 0.7),
-        /* Green glow */
-        0 0 20px rgba(40, 167, 69, 0.6),
-        0 0 30px rgba(40, 167, 69, 0.5);
-    transition: all 0.3s ease;
-    /* Smooth transition effect */
-}
-
-#mainNav .navbar-brand i:hover {
-    text-shadow: 0 0 20px rgba(40, 167, 69, 1),
-        /* Stronger glow on hover */
-        0 0 30px rgba(40, 167, 69, 0.9),
-        0 0 40px rgba(40, 167, 69, 0.8);
-}
-
-#mainNav .navbar-toggler {
-    margin-left: auto;
-    /* Ensure the toggler stays on the right on smaller screens */
-}
-
-
-#mainNav {
-    background-color: black;
+:root {
+    --primary-color: #3baf4a;
+    --primary-hover: #2d9439;
+    --text-color: #ffffff;
+    --dark-bg: #111111;
+    --transition: all 0.3s ease;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+  }
+  
+  .navbar {
     position: fixed;
-    width: 100%;
     top: 0;
-    z-index: 1000;
-}
-
-#Nav-Eduvantage {
-    color: white;
-    font-family: 'Poppins';
-    font-size: 1.5rem;
-    margin-left: 10px;
-}
-
-.navbar-nav {
-    flex-direction: row;
-    /* Ensures nav items are in a row */
-    justify-content: center;
-    /* Center links within the navigation */
     width: 100%;
-    /* Use full width to allow centering */
-}
-
-.navbar-nav .nav-item {
-    margin: 0 15px;
-    /* Adjust spacing between nav items */
-}
-
-.navbar-toggler {
+    background-color: var(--dark-bg);
+    padding: 1rem 0;
+    z-index: 1000;
+    transition: var(--transition);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .navbar.scrolled {
+    padding: 0.7rem 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* Push logo to left, auth section to right */
+    padding: 0 2rem;
+    width: 100%;
+  }
+  
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-start; /* This ensures the logo aligns to the left */
+  }
+  
+  
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: flex-end; /* Aligning the navbar items to the right */
     margin-left: auto;
-    /* Ensures the toggler is always on the right */
-}
+  }
+  
+  .navbar-auth {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligning auth section to the far right */
+  }
+  
+  .logo-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--primary-color);
+  }
+  
+  .logo-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+  }
 
-.Signup-Navbar,
-.user-greeting {
+  .logo-text:hover {
+    color: var(--text-color);
+  }
+  
+  .accent {
+    color: var(--primary-color);
+  }
+  
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+  }
+  
+  .nav-link {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--transition);
+  }
+  
+  .nav-link::after {
+    content: "";
     position: absolute;
-    /* Positions the login/signup or user greeting to the right */
-    right: 20px;
-    /* Right margin for the sign-up or login links */
-    font-family: 'Poppins';
-    font-size: 1.5rem;
-}
-
-.navbar-nav .nav-link {
-    margin: 0 auto;
-    color: white;
-    font-family: 'Poppins';
-}
-
-.navbar-nav .nav-link:hover {
-    color: #3BAF4A;
-}
-
-#username:hover {
-    color: #3BAF4A;
-    cursor: pointer;
-}
-
-@media (max-width: 992px) {
-    .navbar-brand {
-        position: static;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-    }
-}
-
-.Signup-Navbar {
-    margin-left: 0vw;
-    margin-right: 2vw;
-}
-
-.modal-content {
-    border-radius: 10px;
-}
-
-.modal-header {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+  }
+  
+  .nav-link:hover {
+    color: var(--primary-color);
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .auth-buttons {
     display: flex;
-    justify-content: space-between;
-    /* Space out title and close button */
-    align-items: center;
-    /* Align items vertically */
-    padding: 1rem;
-    border-bottom: none;
-    /* Remove the default border if needed */
-}
-
-.modal-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-
-.modal-body {
-    padding: 20px;
-}
-
-.close {
-    font-size: 1.5rem;
-}
-
-.modal-header .close {
-    font-size: 1.5rem;
-    /* Adjust the font size */
+    gap: 1rem;
+  }
+  
+  .login-button,
+  .logout-button {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+  
+  .login-button {
     background-color: transparent;
-    /* Remove background color */
-    border: none;
-    /* Remove border */
-    outline: none;
-    /* Remove default outline */
-    cursor: pointer;
-    /* Change to pointer on hover */
-    color: #333;
-    /* Set text color */
-    padding: 5px 10px;
-    /* Add padding for better alignment */
-    border-radius: 50%;
-    /* Make the button round */
-    transition: background-color 0.3s ease;
-    /* Add a hover transition */
-}
-
-.modal-header .close:hover {
-    background-color: #f5f5f5;
-    /* Add a subtle hover effect */
-    color: #000;
-    /* Change color on hover */
-}
-
-.auth-buttons {
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+  }
+  
+  .login-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .signup-button {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: var(--transition);
+    border: 1px solid var(--primary-color);
+  }
+  
+  .signup-button:hover {
+    background-color: var(--primary-hover);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  
+  .logout-button {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid #e53935;
+  }
+  
+  .logout-button:hover {
+    background-color: #e53935;
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .user-greeting {
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.login-button {
-    background-color: black;
-    color: white;
-    padding: 8px 18px;
-    border-radius: 6px;
-    font-weight: 500;
+    gap: 1rem;
+  }
+  
+  .greeting-text {
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color);
+    font-size: 1.1rem;
+  }
+  
+  .username {
+    color: var(--primary-color);
+    font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
+  }
+  
+  .username:hover {
+    text-decoration: underline;
+    color: var(--primary-hover);
+  }
+  
+  .menu-toggle {
+    display: none;
+    background: transparent;
     border: none;
+    color: var(--text-color);
     cursor: pointer;
-    font-size: 16px;
-    border: 1px solid #3baf4a;
-
-}
-
-.logout-button {
-    background-color: black;
-    color: white;
-    padding: 8px 18px;
-    border-radius: 6px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border: 1px solid rgb(155, 8, 8);
-
-}
-
-.login-button:hover {
-    background-color: #3baf4a;
-    color: white;
-}
-
-.logout-button:hover {
-    background-color: rgb(155, 8, 8);
-    color: white;
-    border-color: rgb(155, 8, 8);
-}
-
-.signup-button {
-    background-color: #3baf4a;
-    color: white;
-    padding: 8px 18px;
-    border-radius: 6px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.signup-button:hover {
-    background-color: black;
-    border: 1px solid #3baf4a;
-    color: white;
-    box-sizing: border-box;
-}
+    z-index: 1001;
+  }
+  
+  .menu-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  @media (max-width: 992px) {
+    .navbar-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: var(--dark-bg);
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      transition: var(--transition);
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+  
+    .navbar-menu.active {
+      right: 0;
+    }
+  
+    .navbar-auth {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+    }
+  
+    .navbar-links {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+  
+    .nav-item {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .nav-link {
+      display: block;
+      padding: 1rem 0;
+      font-size: 1.2rem;
+    }
+  
+    .navbar-auth {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .auth-buttons {
+      flex-direction: column;
+      width: 100%;
+      gap: 1rem;
+    }
+  
+    .login-button,
+    .signup-button,
+    .logout-button {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .user-greeting {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .menu-toggle {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .navbar-container {
+      padding: 0 1rem;
+    }
+  
+    .logo-text {
+      font-size: 1.2rem;
+    }
+  
+    .logo-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  

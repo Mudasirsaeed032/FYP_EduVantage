@@ -83,7 +83,7 @@ useEffect(() => {
 
   const handleChatSelect = (chat) => {
     setCurrentChat(chat);
-    setMessages([{ from: "bot", text: chat.lastMessage, time: "4:18 PM" }]);
+    setMessages([{ from: "bot", text: chat.lastMessage, time: msg.time }]);
   };
 
   return (
@@ -92,7 +92,7 @@ useEffect(() => {
       <div className="w-62 bg-gray-900 border-r border-gray-800 flex flex-col">
         <div className="py-4 px-3 flex items-center gap-1 border-b border-gray-800">
           <GraduationCap className="h-8 w-8 text-[#3BAF4A]" />
-          <Link className='nav-link' to='/home'><span className="text-white font-bold text-3xl">
+          <Link className='nav-link' to='/home'><span className="text-white font-bold text-2xl">
             Edu<span className="text-[#3BAF4A]">Vantage</span>
           </span>
           </Link>
@@ -174,6 +174,9 @@ useEffect(() => {
                 >
                   {msg.text}
                 </ReactMarkdown>
+                <div className={`text-xs mt-1 ${msg.from === "user" ? "text-green-100" : "text-gray-400"}`}>
+                   {msg.time}
+                 </div>
               </div>
             </div>
           ))}
