@@ -10,7 +10,6 @@ import Scholarship from './Components/Scholarship/Scholarship'
 import ChatUI from './Components/ChatUi/ChatUi'
 import ChatPage from './Components/ChatPage/Chatpage'
 import ScholarshipComparison from './Components/Comparison/ScholarshipComparison'
-import ChatBot from './Components/ChatBotUi/ChatBot'
 import FullChat from './Components/ChatBotUi/FullChat'
 
 

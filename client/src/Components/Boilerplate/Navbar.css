@@ -1,313 +1,326 @@
 :root {
-    --primary-color: #3baf4a;
-    --primary-hover: #2d9439;
-    --text-color: #ffffff;
-    --dark-bg: #111111;
-    --transition: all 0.3s ease;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --border-radius: 8px;
-  }
-  
-  .navbar {
+  --primary-color: #3baf4a;
+  --primary-hover: #2d9439;
+  --text-color: #ffffff;
+  --dark-bg: #111111;
+  --transition: all 0.3s ease;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--dark-bg);
+  padding: 1rem 0;
+  z-index: 1000;
+  transition: var(--transition);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar.scrolled {
+  padding: 0.7rem 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  /* This ensures the logo aligns to the left */
+}
+
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Center nav items */
+  gap: 2rem;
+  margin-left: auto;
+  flex: 1;
+}
+
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* Aligning auth section to the far right */
+}
+
+.logo-icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary-color);
+}
+
+.logo-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.logo-text:hover {
+  color: var(--text-color);
+}
+
+.accent {
+  color: var(--primary-color);
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  gap: 2rem;
+  justify-content: center;
+}
+
+
+.nav-link {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.login-button,
+.logout-button {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.login-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--primary-color);
+}
+
+.login-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.signup-button {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: var(--transition);
+  border: 1px solid var(--primary-color);
+}
+
+.signup-button:hover {
+  background-color: var(--primary-hover);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.logout-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid #e53935;
+}
+
+.logout-button:hover {
+  background-color: #e53935;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.user-greeting {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.greeting-text {
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.username {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.username:hover {
+  text-decoration: underline;
+  color: var(--primary-hover);
+}
+
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .navbar-menu {
     position: fixed;
     top: 0;
-    width: 100%;
+    right: -100%;
+    width: 80%;
+    max-width: 400px;
+    height: 100vh;
     background-color: var(--dark-bg);
-    padding: 1rem 0;
-    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
     transition: var(--transition);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .navbar.scrolled {
-    padding: 0.7rem 0;
-    background-color: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
-  }
-  
-  .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;  /* Push logo to left, auth section to right */
-    padding: 0 2rem;
-    width: 100%;
-  }
-  
-  
-  .navbar-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: flex-start; /* This ensures the logo aligns to the left */
-  }
-  
-  
-  .navbar-menu {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    justify-content: flex-end; /* Aligning the navbar items to the right */
-    margin-left: auto;
-  }
-  
-  .navbar-auth {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Aligning auth section to the far right */
-  }
-  
-  .logo-icon {
-    width: 2rem;
-    height: 2rem;
-    color: var(--primary-color);
-  }
-  
-  .logo-text {
-    font-family: "Poppins", sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-color);
-    text-decoration: none;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   }
 
-  .logo-text:hover {
-    color: var(--text-color);
+  .navbar-menu.active {
+    right: 0;
   }
-  
-  .accent {
-    color: var(--primary-color);
-  }
-  
-  .navbar-menu {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    justify-content: flex-end;
-    margin-left: auto;
-  }
-  
-  .navbar-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 1.5rem;
-  }
-  
-  .nav-link {
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 0.5rem 0;
-    position: relative;
-    transition: var(--transition);
-  }
-  
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    transition: var(--transition);
-  }
-  
-  .nav-link:hover {
-    color: var(--primary-color);
-  }
-  
-  .nav-link:hover::after {
-    width: 100%;
-  }
-  
-  .auth-buttons {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .login-button,
-  .logout-button {
-    font-family: "Poppins", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.5rem 1.2rem;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    transition: var(--transition);
-    cursor: pointer;
-  }
-  
-  .login-button {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 1px solid var(--primary-color);
-  }
-  
-  .login-button:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-  }
-  
-  .signup-button {
-    font-family: "Poppins", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.5rem 1.2rem;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    transition: var(--transition);
-    border: 1px solid var(--primary-color);
-  }
-  
-  .signup-button:hover {
-    background-color: var(--primary-hover);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-  }
-  
-  .logout-button {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 1px solid #e53935;
-  }
-  
-  .logout-button:hover {
-    background-color: #e53935;
-    color: white;
-    transform: translateY(-2px);
-  }
-  
-  .user-greeting {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .greeting-text {
-    font-family: "Poppins", sans-serif;
-    color: var(--text-color);
-    font-size: 1.1rem;
-  }
-  
-  .username {
+
+  .nav-link.active-link {
     color: var(--primary-color);
     font-weight: 600;
-    text-decoration: none;
-    transition: var(--transition);
+    border-bottom: 2px solid var(--primary-color);
   }
-  
-  .username:hover {
-    text-decoration: underline;
-    color: var(--primary-hover);
+
+
+  .navbar-auth {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
   }
-  
+
+  .navbar-links {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+  }
+
+  .navbar-auth {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .login-button,
+  .signup-button,
+  .logout-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .user-greeting {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .menu-toggle {
-    display: none;
-    background: transparent;
-    border: none;
-    color: var(--text-color);
-    cursor: pointer;
-    z-index: 1001;
+    display: block;
   }
-  
-  .menu-icon {
+}
+
+@media (max-width: 576px) {
+  .navbar-container {
+    padding: 0 1rem;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  .logo-icon {
     width: 1.5rem;
     height: 1.5rem;
   }
-  
-  @media (max-width: 992px) {
-    .navbar-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 80%;
-      max-width: 400px;
-      height: 100vh;
-      background-color: var(--dark-bg);
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem;
-      transition: var(--transition);
-      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    }
-  
-    .navbar-menu.active {
-      right: 0;
-    }
-  
-    .navbar-auth {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      width: 100%;
-    }
-  
-    .navbar-links {
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-  
-    .nav-item {
-      width: 100%;
-      text-align: center;
-    }
-  
-    .nav-link {
-      display: block;
-      padding: 1rem 0;
-      font-size: 1.2rem;
-    }
-  
-    .navbar-auth {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-  
-    .auth-buttons {
-      flex-direction: column;
-      width: 100%;
-      gap: 1rem;
-    }
-  
-    .login-button,
-    .signup-button,
-    .logout-button {
-      width: 100%;
-      text-align: center;
-    }
-  
-    .user-greeting {
-      flex-direction: column;
-      gap: 1rem;
-    }
-  
-    .menu-toggle {
-      display: block;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .navbar-container {
-      padding: 0 1rem;
-    }
-  
-    .logo-text {
-      font-size: 1.2rem;
-    }
-  
-    .logo-icon {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-  }
-  
+}

@@ -1,19 +1,20 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { GraduationCap, Menu, X } from "lucide-react"
 import "./navbar.css"
 
 export default function Navbar({ user, handleLogout }) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
 
   const navItems = [
     { name: "Home", path: "/home" },
-    { name: "Scholarships", path: "/scholarship" },
     { name: "About", path: "/about" },
     { name: "Contact Us", path: "/contact" },
+    { name: "Recommendation", path: "/recommendation" },
   ]
 
   useEffect(() => {
@@ -42,6 +43,16 @@ export default function Navbar({ user, handleLogout }) {
         </div>
 
         <div className={`navbar-menu ${isOpen ? "active" : ""}`}>
+          <ul className="navbar-links">
+            {navItems.map((item, index) => (
+              <li key={index} className="nav-item">
+                <Link to={item.path} className="nav-link">
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
           <div className="navbar-auth">
             {!user ? (
               <div className="auth-buttons">

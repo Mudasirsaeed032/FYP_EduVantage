@@ -1,5 +1,5 @@
 /* Base styles */
-:root {
+/* :root {
     --primary-color: #3baf4a;
     --primary-dark: #2e8c39;
     --primary-light: #a7e1af;
@@ -10,7 +10,7 @@
     --white: #fff;
     --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     --transition: all 0.3s ease;
-}
+} */
 
 body {
     margin: 0;

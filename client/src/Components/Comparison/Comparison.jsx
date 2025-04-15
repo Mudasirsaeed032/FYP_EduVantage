@@ -25,7 +25,7 @@ const universityDetails = {
     duration: "4 years",
     requirements: "SAT/ACT scores, essays, recommendations, 3.95+ GPA",
     rating: 4.8,
-    acceptance: "4.3%",
+    acceptance: "3.9%",
     studentFacultyRatio: "5:1",
     ranking: "#3 National",
     campusSize: "8,180 acres",
