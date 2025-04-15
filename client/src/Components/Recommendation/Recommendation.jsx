@@ -21,7 +21,7 @@ export default function Recommendation() {
       website: "https://www.harvard.edu",
       image:
         "https://media.istockphoto.com/id/539018591/photo/harvard-moors-hall.jpg?s=2048x2048&w=is&k=20&c=Ebx0J6rNn2mLqXtLDI07ORJ6lUMgbXE2IR55b3hbtk4=",
-      bestFitPercentage: 92,
+      bestFitPercentage: 69,
     },
     {
       name: "Stanford University",
@@ -31,7 +31,7 @@ export default function Recommendation() {
       website: "https://www.stanford.edu",
       image:
         "https://images.unsplash.com/photo-1681782421891-5088f13466ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      bestFitPercentage: 89,
+      bestFitPercentage: 72,
     },
     {
       name: "Massachusetts Institute of Technology (MIT)",
@@ -40,7 +40,7 @@ export default function Recommendation() {
         "MIT is a leader in innovation and research, offering cutting-edge programs in science and technology.",
       website: "https://www.mit.edu",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQapTmka1mz_TPvs-Et7Zsxo_C3mt8FFH89vQ&s",
-      bestFitPercentage: 95,
+      bestFitPercentage: 22,
     },
     {
       name: "University of California, Berkeley",
