@@ -1,3 +1,5 @@
+# Environment setup: chatbot\Scripts\activate
+
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -9,8 +11,8 @@ app = FastAPI()
 
 # CORS middleware setup
 origins = [
-    "http://localhost:5173",  
-    "http://localhost:3000",  
+    "http://localhost:5173",
+    "http://localhost:3000",
   
 ]
 
